@@ -1,0 +1,50 @@
+@import './_defaults.scss';
+
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:200,400,400i,700');
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  background: $black;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 75%;
+  margin: 0 auto;
+  background: $white;
+}
+
+p,
+div {
+  font-family: 'Helvetica';
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $IBM;
+}
+
+a,
+a:visited,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
+  font-style: inherit;
+}
+
+.App {
+  background: $black;
+}

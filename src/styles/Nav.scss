@@ -1,0 +1,41 @@
+@import './_defaults.scss';
+
+nav {
+  align-self: center;
+  margin-right: 5%;
+
+  ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+
+    li {
+      display: inline-block;
+      flex-grow: 1;
+      margin-right: 20px;
+      position: relative;
+      z-index: 10;
+
+      a {
+        display: block;
+        text-align: center;
+        width: 100%;
+        padding: 8px;
+        font-weight: bolder;
+        transition: all 200ms ease-out;
+      }
+    }
+
+    li:last-of-type {
+      margin-right: 0;
+    }
+  }
+
+  #active-tracker {
+    opacity: 0;
+    background: $white;
+    position: absolute;
+    z-index: 1;
+    transition: all 200ms ease-in;
+  }
+}

@@ -1,0 +1,24 @@
+@import './_defaults.scss';
+
+#home-container {
+  text-align: center;
+  background: $white;
+
+  #banner-container {
+    background: $black;
+    color: $white;
+    text-align: left;
+    padding: 10%;
+
+    h1 {
+      font-weight: lighter;
+      font-size: 52px;
+      line-height: 120%;
+    }
+  }
+
+  p {
+    margin: 8px;
+    margin-bottom: 50px;
+  }
+}

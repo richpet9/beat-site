@@ -1,0 +1,64 @@
+@import './_defaults.scss';
+
+#category-showcase {
+  font-family: $IBM;
+
+  ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+
+    li {
+      font-size: 1rem;
+      flex-grow: 1;
+      background: $darkGrey;
+      position: relative;
+
+      a {
+        display: block;
+        position: relative;
+        width: 100%;
+        padding: 80px;
+        color: $white;
+        font-weight: bolder;
+        letter-spacing: -1px;
+      }
+
+      a::after {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        content: '';
+        border: 1px solid $white;
+        border-radius: 2px;
+        transform: scale(1);
+        opacity: 0;
+        transition: all 200ms $bezierCurve;
+      }
+
+      a:hover::after {
+        transform: scale(0.75);
+        opacity: 1;
+      }
+    }
+  }
+}
+
+/* *** Lyrics to our impromptu song recording ***
+ * Swerving in the civic lane to lane we be switchin
+ * * Don't you miss it, blink twice and we'll hit it
+ * Be the gas, hit it fast, never last 
+ * * Be the tree, we stop fast, through the windsheild and the glass
+ * Doesn't matter, we roll fatter, everynight getting louder
+ * * hitting harder homers than the dedicated batter
+ * Then we stop any home, pick a basement pick a phone,
+ * * Hit up any girl near the neighborhood zone 
+ * Sit a little while, spit a freestyle, cook up a beat,
+ * * Sit on it awhile, get a little higher
+ * And here we sit, bored as shit, mind feeling on the fritz
+ * * And what to do? Never knew, the question only ever grew.
+ **/
