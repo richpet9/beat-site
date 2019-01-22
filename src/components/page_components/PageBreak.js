@@ -18,7 +18,7 @@ class PageBreak extends Component {
         break;
     }
 
-    const margin = this.props.nomargin ? '0' : 'inherit';
+    const margin = this.props.nomargin ? '0' : '32px 0';
 
     const style = {
       background: background,

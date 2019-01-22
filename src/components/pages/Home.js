@@ -14,7 +14,7 @@ class Home extends Component {
           <h1>from a musical collective.</h1>
         </div>
         <FeatCats />
-        <PageBreak nomargin>
+        <PageBreak>
           <h1>You may ask yourself</h1>
           <p>Why choose denegri beats?</p>
           <h1>Well I'm gonna show you.</h1>

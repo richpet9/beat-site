@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 //Stylesheet
 import '../../styles/SoundItem.css';
-
-//For test purposes
-import { rows } from '../../database.example';
 
 class SoundItem extends Component {
   render() {
@@ -16,14 +13,16 @@ class SoundItem extends Component {
       <div className="sound-container" id={'sound-' + id}>
         <input type="button" className="sound-play button" value="&#9658;" />
         <div className="sound-left">
-          <div className="sound-name">{name.toUpperCase()}</div>
+          <div className="sound-name">
+            <Link to={'/beats/' + id + '/' + name.replace(/ /g, '-').toLowerCase()}>{name.toUpperCase()}</Link>
+          </div>
           <span className="sound-bpm">{bpm} BPM</span>/<span className="sound-plays">{plays} PLAYS</span>
         </div>
         <div className="sound-right">
           <div className="sound-tags">
             {splitTags.map(tag => (
               <span key={tag} className="sound-tag">
-                {tag.toUpperCase()}
+                <Link to={'/beats?tags=' + tag}>{tag.toUpperCase()}</Link>
               </span>
             ))}
           </div>

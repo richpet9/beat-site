@@ -3,7 +3,6 @@
 .sound-container {
   font-family: $IBM;
   margin: 0px 0;
-  cursor: pointer;
   display: flex;
   padding: 8px;
   padding-right: 16px;
@@ -23,6 +22,10 @@
     font-size: 18px;
     color: $black;
     line-height: 100%;
+
+    a:hover {
+      text-decoration: underline;
+    }
   }
 
   .sound-play.button {
@@ -56,22 +59,24 @@
   }
 
   .sound-tag {
-    border-radius: 2px;
-    border: 1px solid $darkGrey;
-    background: transparent;
-    color: $darkGrey;
-    padding: 4px;
     margin-right: 4px;
-    letter-spacing: -0.5px;
-    font-size: 11px;
     transition: all 150ms $bezierCurve;
-    font-weight: normal;
     opacity: 0.35;
+
+    a {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 2px;
+      border: 1px solid $darkGrey;
+      background: transparent;
+      color: $darkGrey;
+      font-size: 11px;
+      letter-spacing: -0.5px;
+      font-weight: normal;
+    }
   }
 
   .sound-tag:hover {
-    border-color: $highlight;
-    color: $highlight;
     opacity: 1;
   }
 
@@ -79,6 +84,7 @@
     display: inline-block;
     font-size: 14px;
     margin-left: 16px;
+    font-weight: bolder;
   }
 }
 

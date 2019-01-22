@@ -87,3 +87,15 @@ input[type='button'].button {
 input[type='button'].button:hover {
   background: $darkHighlight;
 }
+
+.light {
+  font-weight: lighter;
+}
+
+.heavy {
+  font-weight: bolder;
+}
+
+.normal {
+  font-weight: normal;
+}

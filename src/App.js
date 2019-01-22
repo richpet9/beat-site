@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from './components/page_components/Header';
 import Home from './components/pages/Home';
 import Beats from './components/pages/Beats';
+import SoundPage from './components/pages/SoundPage';
 
 //Root stylesheet
 import './styles/App.css';
@@ -13,11 +14,15 @@ class App extends Component {
       <Router>
         <div className="App">
           <Header />
-          <Route exact path="/" component={Home} />
-          <Route path="/kits" component={Kits} />
-          <Route path="/beats" component={Beats} />
-          <Route path="/loops" component={Loops} />
-          <Route path="/contact" component={Contact} />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/kits" component={Kits} />
+            <Route exact path="/beats" component={Beats} />
+            <Route path="/beats/:id/:beatName?" component={SoundPage} />
+            <Route path="/loops" component={Loops} />
+            <Route path="/contact" component={Contact} />
+            <Route component={NoMatch} />
+          </Switch>
         </div>
       </Router>
     );
@@ -46,6 +51,14 @@ const Contact = props => {
   return (
     <div id="home-container" className="container">
       <h3>DON'T YOU EVER CONTACT ME, YOU.</h3>
+    </div>
+  );
+};
+
+const NoMatch = props => {
+  return (
+    <div id="home-container" className="container">
+      <h1>404 &mdash; That page cannot be found</h1>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, NavLink, withRouter } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 
 //Stylesheet
 import '../../styles/Nav.css';
@@ -13,16 +13,17 @@ class Nav extends Component {
 
   //This handles showing the active tracker when going directly to route
   componentDidMount() {
-    this.handleNavClick(this.state.currentNav.substr(1));
+    this.handleNavClick(this.getFirstUrlParam(this.state.currentNav));
   }
 
   //This handles showing the active tracker when navigating from outside the navbar
   componentDidUpdate() {
     //Only set the state if it's different: prevent infinite looping
-    if (this.state.currentNav != this.props.location.pathname) {
+    if (this.state.currentNav !== this.props.location.pathname) {
       this.setState({ currentNav: this.props.location.pathname });
     }
-    this.handleNavClick(this.state.currentNav.substr(1));
+
+    this.handleNavClick(this.getFirstUrlParam(this.state.currentNav));
   }
 
   //This handles what to do when clicking a nav item
@@ -31,7 +32,7 @@ class Nav extends Component {
     let el;
 
     //Check if we are navigating to root or a page
-    if (item == '') {
+    if (item === '') {
       el = document.getElementById('kits');
       tracker.style.opacity = 0;
     } else {
@@ -50,6 +51,23 @@ class Nav extends Component {
 
       tracker.style.opacity = 1;
     }
+  }
+
+  //This method takes a string url and cuts it to only include whats between the
+  //first two paranthesis (e.g. '/beats/3/beat-name' => 'beats')
+  getFirstUrlParam(url) {
+    let res = '';
+    if (url.indexOf('/', 1) !== -1) {
+      const indexLastSlash = url.indexOf('/', 1);
+      res = url.substr(1, indexLastSlash - 1);
+    } else {
+      res = this.state.currentNav.substr(1);
+    }
+    //This is a catch for unknown URLs
+    if (res !== 'kits' && res !== 'beats' && res !== 'loops' && res !== 'contact' && res !== '') {
+      res = '';
+    }
+    return res;
   }
 
   render() {
