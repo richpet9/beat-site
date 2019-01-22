@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Header from './components/page_components/Header';
-import Home from './components/pages/Home';
-import Beats from './components/pages/Beats';
-import SoundPage from './components/pages/SoundPage';
+import Header from './page_components/Header';
+import Home from './pages/Home';
+import Beats from './pages/Beats';
+import SoundPage from './pages/SoundPage';
 
 //Root stylesheet
-import './styles/App.css';
+import '../styles/App.css';
 
 class App extends Component {
   render() {
