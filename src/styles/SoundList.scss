@@ -1,0 +1,21 @@
+@import './_defaults.scss';
+
+.sound-list-container {
+  width: 75%;
+  max-width: 750px;
+  min-width: 500px;
+  margin: 0 auto;
+
+  ul {
+    list-style: none;
+
+    li {
+      padding: 0px 0;
+      border-bottom: 1px solid $lightGrey;
+    }
+
+    li:last-child {
+      border-bottom: none;
+    }
+  }
+}

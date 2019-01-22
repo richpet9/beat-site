@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import Nav from './Nav';
 
 //Stylesheet
-import '../styles/Header.css';
+import '../../styles/Header.css';
 
 class Header extends Component {
   onClickHome() {

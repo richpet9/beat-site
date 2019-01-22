@@ -24,6 +24,10 @@ nav {
         font-weight: bolder;
         transition: all 200ms ease-out;
       }
+
+      a:hover {
+        color: $highlight;
+      }
     }
 
     li:last-of-type {
@@ -33,7 +37,7 @@ nav {
 
   #active-tracker {
     opacity: 0;
-    background: $white;
+    background: $black;
     position: absolute;
     z-index: 1;
     transition: all 200ms ease-in;

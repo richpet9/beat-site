@@ -6,7 +6,7 @@ body,
 html {
   margin: 0;
   padding: 0;
-  background: $black;
+  background: $white;
 }
 
 * {
@@ -15,15 +15,14 @@ html {
   padding: 0;
 }
 
+*::selection {
+  background: $lightHighlight;
+}
+
 body {
   width: 75%;
   margin: 0 auto;
-  background: $white;
-}
-
-p,
-div {
-  font-family: 'Helvetica';
+  background: $black;
 }
 
 h1,
@@ -46,5 +45,45 @@ a:active {
 }
 
 .App {
-  background: $black;
+  background: $white;
+}
+
+.container {
+  background: transparent;
+}
+
+.highlight-header {
+  font-size: 64px;
+  font-style: italic;
+  display: inline-block;
+  line-height: 90%;
+  color: $black;
+  position: relative;
+  z-index: 40;
+}
+
+.highlight-header::before {
+  content: '';
+  background: $highlight;
+  width: 100%;
+  height: 100%;
+  display: block;
+  bottom: -14px;
+  left: -14px;
+  position: absolute;
+  z-index: -1;
+}
+
+input[type='button'].button {
+  outline: none;
+  border: none;
+  border-radius: 2px;
+  background: $highlight;
+  color: $white;
+  cursor: pointer;
+  padding: 8px;
+}
+
+input[type='button'].button:hover {
+  background: $darkHighlight;
 }

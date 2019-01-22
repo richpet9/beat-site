@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import FeatCats from './FeatCats';
-import PageBreak from './PageBreak';
+import FeatCats from '../page_components/FeatCats';
+import PageBreak from '../page_components/PageBreak';
 
 //Stylesheet
-import '../styles/Home.css';
+import '../../styles/Home.css';
 
 class Home extends Component {
   render() {
@@ -14,7 +14,7 @@ class Home extends Component {
           <h1>from a musical collective.</h1>
         </div>
         <FeatCats />
-        <PageBreak>
+        <PageBreak nomargin>
           <h1>You may ask yourself</h1>
           <p>Why choose denegri beats?</p>
           <h1>Well I'm gonna show you.</h1>

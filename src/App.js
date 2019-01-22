@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import Header from './components/Header';
-import Home from './components/Home';
+import Header from './components/page_components/Header';
+import Home from './components/pages/Home';
+import Beats from './components/pages/Beats';
 
 //Root stylesheet
 import './styles/App.css';
@@ -27,15 +28,6 @@ const Kits = props => {
   return (
     <div id="home-container" className="container">
       <h3>LET'S GET THESE KITS</h3>
-      <p>now spend money on my midi</p>
-    </div>
-  );
-};
-
-const Beats = props => {
-  return (
-    <div id="home-container" className="container">
-      <h3>EGG BEATERS</h3>
       <p>now spend money on my midi</p>
     </div>
   );

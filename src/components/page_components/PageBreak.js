@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 //Stylesheet
-import '../styles/PageBreak.css';
+import '../../styles/PageBreak.css';
 
 class PageBreak extends Component {
   render() {
@@ -18,8 +18,15 @@ class PageBreak extends Component {
         break;
     }
 
+    const margin = this.props.nomargin ? '0' : 'inherit';
+
+    const style = {
+      background: background,
+      margin: margin
+    };
+
     return (
-      <div className="page-break" style={{ background: background }}>
+      <div className="page-break" style={style}>
         {this.props.children}
       </div>
     );

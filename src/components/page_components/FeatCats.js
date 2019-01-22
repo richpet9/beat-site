@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 //Stylesheet
-import '../styles/FeatCats.css';
+import '../../styles/FeatCats.css';
 
 class FeatCats extends Component {
   handleMouseOver() {}
@@ -17,8 +17,8 @@ class FeatCats extends Component {
             </Link>
           </li>
           <li>
-            <Link to="/loops" onMouseOver={this.handleMouseOver}>
-              LOOPS & SAMPLES
+            <Link to="/beats" onMouseOver={this.handleMouseOver} style={{ flexGrow: 1 }}>
+              BEATS
             </Link>
           </li>
           <li>

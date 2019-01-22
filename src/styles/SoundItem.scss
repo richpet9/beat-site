@@ -1,0 +1,95 @@
+@import './_defaults.scss';
+
+.sound-container {
+  font-family: $IBM;
+  margin: 0px 0;
+  cursor: pointer;
+  display: flex;
+  padding: 8px;
+  padding-right: 16px;
+
+  .sound-left {
+    flex-grow: 1;
+    font-weight: lighter;
+    margin-left: 40px;
+  }
+
+  .sound-right {
+    align-self: center;
+  }
+
+  .sound-name {
+    font-weight: normal;
+    font-size: 18px;
+    color: $black;
+    line-height: 100%;
+  }
+
+  .sound-play.button {
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 100px;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    align-self: center;
+    margin-right: 8px;
+    display: none;
+    padding-left: 12px;
+    padding-bottom: 23px;
+  }
+
+  .sound-play.button:hover {
+    background: $highlight;
+  }
+
+  .sound-tags,
+  .sound-date,
+  .sound-bpm,
+  .sound-plays,
+  .sound-purchases {
+    font-size: 12px;
+  }
+
+  .sound-tags {
+    display: inline-block;
+  }
+
+  .sound-tag {
+    border-radius: 2px;
+    border: 1px solid $darkGrey;
+    background: transparent;
+    color: $darkGrey;
+    padding: 4px;
+    margin-right: 4px;
+    letter-spacing: -0.5px;
+    font-size: 11px;
+    transition: all 150ms $bezierCurve;
+    font-weight: normal;
+    opacity: 0.35;
+  }
+
+  .sound-tag:hover {
+    border-color: $highlight;
+    color: $highlight;
+    opacity: 1;
+  }
+
+  .sound-price {
+    display: inline-block;
+    font-size: 14px;
+    margin-left: 16px;
+  }
+}
+
+.sound-container:hover {
+  background: $lightGrey;
+
+  .sound-left {
+    margin-left: 0;
+  }
+
+  .sound-play.button {
+    display: block;
+  }
+}

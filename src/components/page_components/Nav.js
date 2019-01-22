@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, NavLink, withRouter } from 'react-router-dom';
 
 //Stylesheet
-import '../styles/Nav.css';
+import '../../styles/Nav.css';
 
 class Nav extends Component {
   constructor(props) {
@@ -58,7 +58,7 @@ class Nav extends Component {
         <ul>
           {this.props.navItems.map(item => (
             <li key={item}>
-              <NavLink id={item} to={'/' + item} activeStyle={{ color: 'black' }} onClick={this.handleNavClick.bind(this, item)}>
+              <NavLink id={item} to={'/' + item} activeStyle={{ color: 'white' }} onClick={this.handleNavClick.bind(this, item)}>
                 {item.toUpperCase()}
               </NavLink>
             </li>
