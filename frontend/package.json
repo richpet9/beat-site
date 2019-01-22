@@ -13,8 +13,8 @@
     "node-sass-chokidar": "^1.3.4"
   },
   "scripts": {
-    "build-css": "node-sass-chokidar src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "build-css": "node-sass-chokidar frontend/src/ -o frontend/src/",
+    "watch-css": "npm run build-css && node-sass-chokidar frontend/src/ -o frontend/src/ --watch --recursive",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
