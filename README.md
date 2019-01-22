@@ -1,5 +1,5 @@
 ## WIP eCommerce/Beat Hosting Site
-Live version is available [here](www.beats.richardpetrosino.com).
+Live version is available [here](http://beats.richardpetrosino.com/beats).
 
 ### Created with ReactJS
 **Dependencies**
