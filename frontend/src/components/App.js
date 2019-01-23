@@ -17,8 +17,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/kits" component={Kits} />
-            <Route exact path="/beats" component={Beats} />
-            <Route path="/beats/:id/:beatName?" component={SoundPage} />
+            <Route path="/beats" component={Beats} />
             <Route path="/loops" component={Loops} />
             <Route path="/contact" component={Contact} />
             <Route component={NoMatch} />

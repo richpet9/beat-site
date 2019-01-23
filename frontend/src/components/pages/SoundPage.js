@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 //Stylesheet
 import '../../styles/SoundPage.css';
@@ -28,6 +28,8 @@ class BeatPage extends Component {
   }
 
   render() {
+    const tagsSplit = this.soundInfo.tags.split(' ');
+
     if (this.soundInfo) {
       return (
         <div id="sound-page-container">
@@ -35,6 +37,18 @@ class BeatPage extends Component {
           <h3 className="light">
             {this.soundInfo.bpm} BPM/{this.soundInfo.plays} PLAYS
           </h3>
+          <h6 style={{ margin: '75px 0' }}>I really should figure out how I'm gonna play the sounds.</h6>
+          <div className="sound-tags">
+            {tagsSplit.map(tag => (
+              <span key={tag} className="sound-tag">
+                <Link to={'/beats?tags=' + tag}>{tag.toUpperCase()}</Link>
+              </span>
+            ))}
+          </div>
+          <div className="purchase-button-container">
+            <input type="button" className="purchase-button button" value={'$' + this.soundInfo.price} />
+            <span className="hover-text">Add to cart</span>
+          </div>
         </div>
       );
     } else {

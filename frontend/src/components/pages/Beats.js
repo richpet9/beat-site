@@ -10,7 +10,8 @@ class Beats extends Component {
   render() {
     return (
       <div id="beats-container" className="container">
-        <SoundList />
+        <Route exact path="/beats" component={SoundList} />
+        <Route path="/beats/:id" component={SoundPage} />
       </div>
     );
   }

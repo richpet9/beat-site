@@ -99,3 +99,29 @@ input[type='button'].button:hover {
 .normal {
   font-weight: normal;
 }
+.sound-tags {
+  display: inline-block;
+  font-family: $IBM;
+}
+
+.sound-tag {
+  margin-right: 4px;
+  transition: all 150ms $bezierCurve;
+  opacity: 0.35;
+
+  a {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 2px;
+    border: 1px solid $darkGrey;
+    background: transparent;
+    color: $darkGrey;
+    font-size: 11px;
+    letter-spacing: -0.5px;
+    font-weight: normal;
+  }
+}
+
+.sound-tag:hover {
+  opacity: 1;
+}
