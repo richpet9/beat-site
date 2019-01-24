@@ -10,7 +10,7 @@ app.use(express.static(path.join(__dirname, '../frontend/build')));
 
 app.get('/api/:version/:category/:id/:name', (req, res) => {
   if (req.params.version === 'preview') {
-    res.sendFile(path.join(__dirname, '/sounds/' + req.params.category + '/' + req.params.id + '/ad-' + req.params.name + '-p.mp3'));
+    res.sendFile(path.join(__dirname, '/sounds/' + req.params.category + '/' + req.params.id + '-ad-' + req.params.name + '-p.mp3'));
   }
 });
 
