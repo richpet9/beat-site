@@ -5,52 +5,35 @@
   width: 75%;
   min-width: 450px;
   max-width: 700px;
+  position: relative;
+  overflow: auto;
 
   #sound-name {
     display: inline-block;
+    position: absolute;
+    left: 40px;
+    top: -7px;
   }
 
-  #play-button {
+  .audio-control {
     display: inline-block;
     padding: 0;
     color: $highlight;
     font-size: 26px;
     margin-right: 10px;
     background: none;
+    position: absolute;
+    left: 0;
   }
 
-  .purchase-button-container {
-    width: 18%;
-    min-width: 120px;
-    max-width: 200px;
-    margin: 0 auto;
-    text-align: center;
-    position: relative;
+  #pause-button {
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    display: none;
+  }
 
-    .purchase-button {
-      display: block;
-      width: 100%;
-      font-size: 16px;
-      padding: 8px 32px;
-    }
-
-    .hover-text {
-      display: block;
-      font-family: $IBM;
-      color: $white;
-      position: absolute;
-      text-align: center;
-      width: 100%;
-    }
-
-    .purchase-button:hover,
-    .hover-text:hover + .purchase-button {
-      color: $darkHighlight;
-    }
-
-    .hover-text:hover,
-    .purchase-button:hover ~ .hover-text {
-      transform: translateY(-27px);
-    }
+  #sound-meta {
+    margin-top: 40px;
   }
 }

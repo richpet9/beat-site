@@ -6,6 +6,9 @@
 # production
 **/build
 
+# only local development
+**/dev_*
+
 # only upload sass files
 *.css
 

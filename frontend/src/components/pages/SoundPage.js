@@ -34,11 +34,12 @@ class BeatPage extends Component {
       const tagsSplit = this.soundInfo.tags.split(' ');
       return (
         <div id="sound-page-container">
-          <input type="button" className="button" id="play-button" value="&#9658;" />
+          <input type="button" className="button audio-control" id="play-button" value="&#9658;" />
+          <input type="button" className="button audio-control" id="pause-button" value="&#10074;&#10074;" />
           <h1 className="normal" id="sound-name">
             {this.soundInfo.name}
           </h1>
-          <h3 className="light">
+          <h3 className="light" id="sound-meta">
             {this.soundInfo.bpm} BPM/{this.soundInfo.plays} PLAYS
           </h3>
 
@@ -52,7 +53,7 @@ class BeatPage extends Component {
             ))}
           </div>
 
-          <RolloverButton before={'$' + this.soundInfo.price} after="Purchase" />
+          <RolloverButton before={'$' + this.soundInfo.price.toFixed(2)} after="Purchase" to="" />
         </div>
       );
     } else {
