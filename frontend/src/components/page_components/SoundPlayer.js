@@ -38,6 +38,9 @@ class SoundPlayer extends Component {
       }
     };
 
+    //Cross-platform enabling
+    window.AudioContext = window.AudioContext || window.webkitAudioContext;
+
     const audioCtx = new window.AudioContext();
     this.analyser = audioCtx.createAnalyser();
 
