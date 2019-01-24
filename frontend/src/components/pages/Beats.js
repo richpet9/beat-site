@@ -11,7 +11,7 @@ class Beats extends Component {
     return (
       <div id="beats-container" className="container">
         <Route exact path="/beats" component={SoundList} />
-        <Route path="/beats/:id" component={SoundPage} />
+        <Route path="/beats/:id/:beatName?" component={SoundPage} />
       </div>
     );
   }

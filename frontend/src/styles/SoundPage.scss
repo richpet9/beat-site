@@ -6,6 +6,19 @@
   min-width: 450px;
   max-width: 700px;
 
+  #sound-name {
+    display: inline-block;
+  }
+
+  #play-button {
+    display: inline-block;
+    padding: 0;
+    color: $highlight;
+    font-size: 26px;
+    margin-right: 10px;
+    background: none;
+  }
+
   .purchase-button-container {
     width: 18%;
     min-width: 120px;

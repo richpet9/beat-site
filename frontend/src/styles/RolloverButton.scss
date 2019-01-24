@@ -1,0 +1,32 @@
+@import './_defaults.scss';
+
+.rollover-button-container {
+  display: block;
+  width: 150px;
+  height: 36px;
+  margin: 0 auto;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  font-family: $IBM;
+  font-size: 18px;
+
+  .rollover-button {
+    display: block;
+  }
+
+  .rollover-before,
+  .rollover-after {
+    position: absolute;
+    color: white;
+    transition: top 150ms $bezierCurve;
+  }
+
+  .rollover-before {
+    left: 45px;
+  }
+
+  .rollover-after {
+    left: 40px;
+  }
+}

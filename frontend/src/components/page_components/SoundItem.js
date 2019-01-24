@@ -14,7 +14,7 @@ class SoundItem extends Component {
         <input type="button" className="sound-play button" value="&#9658;" />
         <div className="sound-left">
           <div className="sound-name">
-            <Link to={'/beats/' + id + '/' + name.replace(/ /g, '-').toLowerCase()}>{name.toUpperCase()}</Link>
+            <Link to={'/beats/' + id + '/' + name.replace(/ /g, '-').toLowerCase()}>{name}</Link>
           </div>
           <span className="sound-bpm">{bpm} BPM</span>/<span className="sound-plays">{plays} PLAYS</span>
         </div>

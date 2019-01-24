@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
+import SoundPlayer from '../page_components/SoundPlayer';
+import RolloverButton from '../page_components/RolloverButton';
 
 //Stylesheet
 import '../../styles/SoundPage.css';
@@ -28,16 +30,20 @@ class BeatPage extends Component {
   }
 
   render() {
-    const tagsSplit = this.soundInfo.tags.split(' ');
-
     if (this.soundInfo) {
+      const tagsSplit = this.soundInfo.tags.split(' ');
       return (
         <div id="sound-page-container">
-          <h1 className="normal">{this.soundInfo.name.toUpperCase()}</h1>
+          <input type="button" className="button" id="play-button" value="&#9658;" />
+          <h1 className="normal" id="sound-name">
+            {this.soundInfo.name}
+          </h1>
           <h3 className="light">
             {this.soundInfo.bpm} BPM/{this.soundInfo.plays} PLAYS
           </h3>
-          <h6 style={{ margin: '75px 0' }}>I really should figure out how I'm gonna play the sounds.</h6>
+
+          <SoundPlayer sound={this.soundInfo} />
+
           <div className="sound-tags">
             {tagsSplit.map(tag => (
               <span key={tag} className="sound-tag">
@@ -45,10 +51,8 @@ class BeatPage extends Component {
               </span>
             ))}
           </div>
-          <div className="purchase-button-container">
-            <input type="button" className="purchase-button button" value={'$' + this.soundInfo.price} />
-            <span className="hover-text">Add to cart</span>
-          </div>
+
+          <RolloverButton before={'$' + this.soundInfo.price} after="Purchase" />
         </div>
       );
     } else {

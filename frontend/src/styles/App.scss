@@ -74,7 +74,8 @@ a:active {
   z-index: -1;
 }
 
-input[type='button'].button {
+input[type='button'].button,
+a.button {
   outline: none;
   border: none;
   border-radius: 2px;
@@ -84,7 +85,8 @@ input[type='button'].button {
   padding: 8px;
 }
 
-input[type='button'].button:hover {
+input[type='button'].button:hover,
+a.button:hover {
   background: $darkHighlight;
 }
 
