@@ -22,7 +22,7 @@ class SoundItem extends Component {
         {this.props.currentSound && !this.props.paused && (
           <input type="button" className="sound-pause button" value="&#10074;&#10074;" onClick={this.toggleAudio.bind(this)} />
         )}
-        <div className="sound-left">
+        <div className={this.props.currentSound && !this.props.paused ? 'sound-left current' : 'sound-left'}>
           <div className="sound-name">
             <Link to={'/beats/' + id + '/' + name.replace(/ /g, '-').toLowerCase()}>{name}</Link>
           </div>

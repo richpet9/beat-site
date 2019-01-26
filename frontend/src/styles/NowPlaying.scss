@@ -8,4 +8,13 @@
   background: $lightGrey;
   width: 100%;
   color: $black;
+  transition: bottom 200ms $bezierCurve;
+
+  #now-playing-link {
+    text-decoration: underline;
+  }
+
+  #now-playing-link:hover {
+    color: $highlight;
+  }
 }

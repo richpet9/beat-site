@@ -13,7 +13,7 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { nowPlaying: null, audioUrl: null, paused: null };
+    this.state = { nowPlaying: null, audioUrl: null, paused: true };
     this.audio = null;
     this.audioCtx = null;
     this.analyser = null;
@@ -65,7 +65,9 @@ class App extends Component {
   }
 
   seekAudio(time) {
-    this.audio.currentTime = time;
+    //time is a percent
+    const seek = time * this.audio.duration;
+    this.audio.currentTime = seek;
     this.toggleAudio(true); //onlyPlay = true
   }
 
@@ -95,7 +97,7 @@ class App extends Component {
             <Route component={NoMatch} />
           </Switch>
 
-          <NowPlaying sound={this.state.nowPlaying} />
+          <NowPlaying sound={this.state.nowPlaying} paused={this.state.paused} />
 
           <audio id="audio-controller" loop>
             <source src={this.state.audioUrl} type="audio/mpeg" />

@@ -13,6 +13,10 @@
     margin-left: 40px;
   }
 
+  .sound-left.current {
+    margin-left: 0;
+  }
+
   .sound-right {
     align-self: center;
   }
@@ -51,6 +55,7 @@
   }
 
   .sound-pause.button {
+    display: block;
     padding-left: 8px;
     padding-bottom: 10px;
   }
@@ -80,8 +85,7 @@
     margin-left: 0;
   }
 
-  .sound-play.button,
-  .sound-pause.button {
+  .sound-play.button {
     display: block;
   }
 }

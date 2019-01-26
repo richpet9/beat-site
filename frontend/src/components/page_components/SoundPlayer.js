@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 
 //Stylesheet
 import '../../styles/SoundPlayer.css';
@@ -9,7 +8,6 @@ class SoundPlayer extends Component {
     super(props);
 
     //These are global variables for use in other methods
-    this.audioCtx = null;
     this.analyser = this.props.analyser;
     this.canvas = null;
     this.ctx = null;
@@ -31,6 +29,10 @@ class SoundPlayer extends Component {
     this.ctx = this.canvas.getContext('2d');
 
     this.checkAnalyser();
+
+    //Progress bar event listener
+    const audio = document.getElementById('audio-controller');
+    audio.addEventListener('timeupdate', this.updateProgress);
   }
 
   //CheckAnalyser checks if the audio analyser is loaded in window, and loops if not
@@ -81,9 +83,8 @@ class SoundPlayer extends Component {
 
   updateProgress = () => {
     //Update the progress
-    const progress = document.getElementById('progress-bar');
     const audioEl = document.getElementById('audio-controller');
-    progress.style.width = (audioEl.currentTime / audioEl.duration) * 100 + '%';
+    this.setState({ progress: (audioEl.currentTime / audioEl.duration) * 100 + '%' });
   };
 
   componentWillUnmount() {
@@ -95,12 +96,28 @@ class SoundPlayer extends Component {
     return (
       <div id="sound-player-container">
         <canvas id="audio-canvas" width={this.state.width} />
-        <div id="progress-bar-container">
-          <div id="progress-bar" style={{ width: this.state.progress }} />
+        <div
+          id="progress-bar-container"
+          onClick={e => {
+            const container = document.getElementById('sound-player-container').parentNode;
+            const clickX = e.pageX - container.offsetLeft;
+            const clickTime = clickX / container.offsetWidth;
+            if (!this.props.nowPlaying) {
+              this.props.setNowPlaying(this.props.sound);
+              this.props.toggleAudio();
+            } else if (this.props.nowPlaying !== this.props.sound) {
+              this.props.setNowPlaying(this.props.sound);
+              this.props.toggleAudio();
+            } else {
+              this.props.seekAudio(clickTime);
+            }
+          }}
+        >
+          <div id="progress-bar" style={this.props.sound === this.props.nowPlaying ? { width: this.state.progress } : { width: 0 }} />
         </div>
       </div>
     );
   }
 }
 
-export default withRouter(SoundPlayer);
+export default SoundPlayer;

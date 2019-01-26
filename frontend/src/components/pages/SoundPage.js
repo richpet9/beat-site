@@ -8,7 +8,7 @@ import '../../styles/SoundPage.css';
 
 import { rows } from '../../database.example';
 
-class BeatPage extends Component {
+class SoundPage extends Component {
   constructor(props) {
     super(props);
 
@@ -19,12 +19,16 @@ class BeatPage extends Component {
   }
 
   componentWillMount() {
-    rows.forEach(row => {
-      if (row.id === Number(this.props.match.params.id)) {
-        this.soundInfo = row;
-        window.history.replaceState('SoundPage', this.soundInfo.name, '/beats/' + this.soundInfo.id + '/' + this.soundInfo.name.replace(/ /g, '-').toLowerCase());
-      }
-    });
+    this.soundInfo = this.fetchSoundInfo(this.props.match.params.id);
+    window.history.replaceState('SoundPage', this.soundInfo.name, '/beats/' + this.soundInfo.id + '/' + this.soundInfo.name.replace(/ /g, '-').toLowerCase());
+  }
+
+  componentDidUpdate() {
+    if (this.soundInfo.id !== Number(this.props.match.params.id)) {
+      this.soundInfo = this.fetchSoundInfo(this.props.match.params.id);
+      window.history.replaceState('SoundPage', this.soundInfo.name, '/beats/' + this.soundInfo.id + '/' + this.soundInfo.name.replace(/ /g, '-').toLowerCase());
+      this.forceUpdate();
+    }
   }
 
   soundNotFound(id) {
@@ -41,6 +45,16 @@ class BeatPage extends Component {
       this.props.setNowPlaying(this.soundInfo);
     }
     this.props.toggleAudio();
+  }
+
+  fetchSoundInfo(id) {
+    let res = false;
+    rows.forEach(row => {
+      if (row.id === Number(id)) {
+        res = row;
+      }
+    });
+    return res;
   }
 
   render() {
@@ -61,7 +75,13 @@ class BeatPage extends Component {
             {this.soundInfo.bpm} BPM/{this.soundInfo.plays} PLAYS
           </h3>
 
-          <SoundPlayer sound={this.soundInfo} nowPlaying={this.props.nowPlaying} seekAudio={this.props.seekAudio} />
+          <SoundPlayer
+            sound={this.soundInfo}
+            nowPlaying={this.props.nowPlaying}
+            setNowPlaying={this.props.setNowPlaying}
+            toggleAudio={this.props.toggleAudio}
+            seekAudio={this.props.seekAudio}
+          />
 
           <div className="sound-tags">
             {tagsSplit.map(tag => (
@@ -80,4 +100,4 @@ class BeatPage extends Component {
   }
 }
 
-export default withRouter(BeatPage);
+export default withRouter(SoundPage);
