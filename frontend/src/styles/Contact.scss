@@ -1,0 +1,24 @@
+@import './_defaults.scss';
+
+#contact-container {
+  font-family: $IBM;
+
+  h1 {
+    margin-bottom: 16px;
+  }
+
+  #contact-form {
+    width: 100%;
+
+    .flex-box {
+      margin-bottom: 16px;
+    }
+
+    #contact-send {
+      font-size: 16px;
+      float: right;
+      margin-top: 16px;
+      width: 100px;
+    }
+  }
+}

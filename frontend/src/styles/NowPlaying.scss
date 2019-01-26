@@ -1,0 +1,11 @@
+@import './_defaults.scss';
+
+#now-playing-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 16px 12.5%;
+  background: $lightGrey;
+  width: 100%;
+  color: $black;
+}

@@ -5,13 +5,23 @@ import { Link } from 'react-router-dom';
 import '../../styles/SoundItem.css';
 
 class SoundItem extends Component {
+  toggleAudio() {
+    if (!this.props.currentSound) {
+      this.props.setNowPlaying(this.props.sound);
+    }
+    this.props.toggleAudio();
+  }
+
   render() {
-    const { id, name, tags, date, bpm, plays, purchases, price } = this.props;
+    const { id, name, tags, date, bpm, plays, purchases, price } = this.props.sound;
     const splitTags = tags.split(' ');
 
     return (
       <div className="sound-container" id={'sound-' + id}>
-        <input type="button" className="sound-play button" value="&#9658;" />
+        {(!this.props.currentSound || this.props.paused) && <input type="button" className="sound-play button" value="&#9658;" onClick={this.toggleAudio.bind(this)} />}
+        {this.props.currentSound && !this.props.paused && (
+          <input type="button" className="sound-pause button" value="&#10074;&#10074;" onClick={this.toggleAudio.bind(this)} />
+        )}
         <div className="sound-left">
           <div className="sound-name">
             <Link to={'/beats/' + id + '/' + name.replace(/ /g, '-').toLowerCase()}>{name}</Link>

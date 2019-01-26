@@ -9,9 +9,11 @@ class SoundPlayer extends Component {
     super(props);
 
     //These are global variables for use in other methods
-    this.analyser = null;
+    this.audioCtx = null;
+    this.analyser = this.props.analyser;
     this.canvas = null;
     this.ctx = null;
+    this.stopAnimation = false;
 
     //Width is the width of the canvas, progress is for the bar
     this.state = {
@@ -21,123 +23,72 @@ class SoundPlayer extends Component {
 
     //Bind functions
     this.frameLoop = this.frameLoop.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
-  //This method builds the source URL for the sound
-  buildSourceUrl(soundInfo) {
-    return '/api/preview/beats/' + soundInfo.id + '/' + soundInfo.name.replace(/ /g, '-').toLowerCase();
-    //return '/dev_sounds/ad-' + soundInfo.name.replace(/ /g, '-').toLowerCase() + '-p.mp3';
-  }
-
-  //Whent he component mounts, handle pretty much everything
   componentDidMount() {
-    //First, set the width to the container's width
-    this.setState({ width: document.getElementById('sound-player-container').scrollWidth });
-
-    //Get the audio element
-    const audioEl = document.getElementById('audio');
-
-    //Cross-platform enabling
-    window.AudioContext = window.AudioContext || window.webkitAudioContext;
-
-    //Create an audio context and set global analyser
-    const audioCtx = new window.AudioContext();
-    this.analyser = audioCtx.createAnalyser();
-
-    //Set our other global variables
+    this.setState({ width: document.getElementById('audio-canvas').offsetWidth });
     this.canvas = document.getElementById('audio-canvas');
     this.ctx = this.canvas.getContext('2d');
 
-    //Imma be straight up. I don't know what the next 3 lines do.
-    const source = audioCtx.createMediaElementSource(audioEl);
-    source.connect(this.analyser);
-    this.analyser.connect(audioCtx.destination);
+    this.checkAnalyser();
+  }
 
-    //Initialize the animation
-    this.frameLoop();
-
-    //Some controls!
-    const playButton = document.getElementById('play-button');
-    const pauseButton = document.getElementById('pause-button');
-
-    playButton.onclick = () => {
-      this.playAudio(playButton, pauseButton, audioEl);
-    };
-
-    pauseButton.onclick = () => {
-      this.pauseAudio(playButton, pauseButton, audioEl);
-    };
-
-    //When we press any key ew it's so inefficient
-    document.body.addEventListener('keydown', this.handleKeyPress);
-    document.body.controls = { play: playButton, pause: pauseButton, audio: audioEl };
-
-    //Add a listener to update the progress
-    audioEl.addEventListener('timeupdate', () => {
-      //Update the progress
-      this.setState({ progress: (audioEl.currentTime / audioEl.duration) * 100 + '%' });
-    });
-
-    //Add a listener for clicking on the progress bar (seeking)
-    document.getElementById('progress-bar-container').addEventListener('click', e => {
-      const clickPos = (e.layerX - this.canvas.offsetLeft) / this.canvas.offsetWidth;
-      const clickTime = clickPos * audioEl.duration;
-      audioEl.currentTime = clickTime;
-    });
+  //CheckAnalyser checks if the audio analyser is loaded in window, and loops if not
+  checkAnalyser() {
+    setTimeout(() => {
+      if (window.analyser) {
+        this.frameLoop();
+      } else {
+        this.checkAnalyser();
+      }
+    }, 20);
   }
 
   //This method runs every frame (~60fps)
   frameLoop() {
-    window.requestAnimationFrame(this.frameLoop);
+    if (!this.stopAnimation) {
+      window.requestAnimationFrame(this.frameLoop);
 
-    //Create an array with the number of bins of the analyser
-    let fArr = new Uint8Array(this.analyser.frequencyBinCount);
-    //Fill the array
-    this.analyser.getByteFrequencyData(fArr);
+      //Create an array with the number of bins of the analyser
+      let fArr = new Uint8Array(window.analyser.frequencyBinCount);
+      //Fill the array
+      window.analyser.getByteFrequencyData(fArr);
 
-    //Clear the canvas, set bar color, set number of bars and width
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.ctx.fillStyle = 'rgb(53, 157, 241)';
-    const numBars = 50;
-    const barWidth = this.canvas.width / numBars;
+      //Clear the canvas, set bar color, set number of bars and width
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      this.ctx.fillStyle = 'rgb(53, 157, 241)';
+      const numBars = 50;
+      const barWidth = this.canvas.width / numBars;
 
-    //For every bar
-    for (let i = 0; i < numBars; i++) {
-      //Set the barX location
-      const barX = (barWidth + 2) * i;
-      //Set bar height
-      const barHeight = -(fArr[i] / 2) - 5;
-      //Create the bar for this frame
-      this.ctx.fillRect(barX, this.canvas.height, barWidth, barHeight);
-    }
-  }
+      //For every bar
+      for (let i = 0; i < numBars; i++) {
+        //Set the barX location
+        const barX = (barWidth + 2) * i;
+        //Set bar height
+        let barHeight;
+        //If we aren't on the page for the current sound, do not move the bars
+        if (this.props.sound !== this.props.nowPlaying) {
+          barHeight = -5;
+        } else {
+          barHeight = -(fArr[i] / 2) - 5;
+        }
 
-  pauseAudio(playButton, pauseButton, audioEl) {
-    audioEl.pause();
-    playButton.style.display = 'inline-block';
-    pauseButton.style.display = 'none';
-  }
-
-  playAudio(playButton, pauseButton, audioEl) {
-    audioEl.play();
-    playButton.style.display = 'none';
-    pauseButton.style.display = 'inline-block';
-  }
-
-  handleKeyPress(e) {
-    //If we pressed space (32)
-    if (e.keyCode === 32) {
-      if (e.target.controls.audio.paused) {
-        this.playAudio(e.target.controls.play, e.target.controls.pause, e.target.controls.audio);
-      } else {
-        this.pauseAudio(e.target.controls.play, e.target.controls.pause, e.target.controls.audio);
+        //Create the bar for this frame
+        this.ctx.fillRect(barX, this.canvas.height, barWidth, barHeight);
       }
     }
   }
 
+  updateProgress = () => {
+    //Update the progress
+    const progress = document.getElementById('progress-bar');
+    const audioEl = document.getElementById('audio-controller');
+    progress.style.width = (audioEl.currentTime / audioEl.duration) * 100 + '%';
+  };
+
   componentWillUnmount() {
-    document.body.removeEventListener('keydown', this.handleKeyPress);
+    document.getElementById('audio-controller').removeEventListener('timeupdate', this.updateProgress);
+    this.stopAnimation = true;
   }
 
   render() {
@@ -147,10 +98,6 @@ class SoundPlayer extends Component {
         <div id="progress-bar-container">
           <div id="progress-bar" style={{ width: this.state.progress }} />
         </div>
-        <audio id="audio">
-          <source src={this.buildSourceUrl(this.props.sound)} type="audio/mpeg" />
-          Your browser does not support HTML5 audio.
-        </audio>
       </div>
     );
   }

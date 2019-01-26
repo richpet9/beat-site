@@ -9,7 +9,14 @@ import '../../styles/SoundPage.css';
 import { rows } from '../../database.example';
 
 class BeatPage extends Component {
-  soundInfo = null;
+  constructor(props) {
+    super(props);
+
+    this.soundInfo = null;
+    this.state = { playDisplay: 'block', pauseDisplay: 'none' };
+
+    this.toggleAudio = this.toggleAudio.bind(this);
+  }
 
   componentWillMount() {
     rows.forEach(row => {
@@ -29,13 +36,24 @@ class BeatPage extends Component {
     );
   }
 
+  toggleAudio() {
+    if (this.soundInfo !== this.props.nowPlaying) {
+      this.props.setNowPlaying(this.soundInfo);
+    }
+    this.props.toggleAudio();
+  }
+
   render() {
     if (this.soundInfo) {
       const tagsSplit = this.soundInfo.tags.split(' ');
       return (
         <div id="sound-page-container">
-          <input type="button" className="button audio-control" id="play-button" value="&#9658;" />
-          <input type="button" className="button audio-control" id="pause-button" value="&#10074;&#10074;" />
+          {(this.props.paused || this.soundInfo !== this.props.nowPlaying) && (
+            <input type="button" className="button audio-control" id="play-button" value="&#9658;" onClick={this.toggleAudio} />
+          )}
+          {!this.props.paused && this.soundInfo === this.props.nowPlaying && (
+            <input type="button" className="button audio-control" id="pause-button" value="&#10074;&#10074;" onClick={this.toggleAudio} />
+          )}
           <h1 className="normal" id="sound-name">
             {this.soundInfo.name}
           </h1>
@@ -43,7 +61,7 @@ class BeatPage extends Component {
             {this.soundInfo.bpm} BPM/{this.soundInfo.plays} PLAYS
           </h3>
 
-          <SoundPlayer sound={this.soundInfo} />
+          <SoundPlayer sound={this.soundInfo} nowPlaying={this.props.nowPlaying} seekAudio={this.props.seekAudio} />
 
           <div className="sound-tags">
             {tagsSplit.map(tag => (

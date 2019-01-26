@@ -8,6 +8,12 @@ import '../../styles/SoundList.css';
 import { rows } from '../../database.example';
 
 class SoundList extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { nowPlaying: null };
+  }
+
   render() {
     return (
       <div className="sound-list-container">
@@ -16,14 +22,11 @@ class SoundList extends Component {
             return (
               <li key={row.id}>
                 <SoundItem
-                  id={row.id}
-                  name={row.name}
-                  date={row.date_uploaded}
-                  bpm={row.bpm}
-                  plays={row.plays}
-                  tags={row.tags}
-                  purchases={row.purchases}
-                  price={row.price}
+                  sound={row}
+                  paused={this.props.paused}
+                  currentSound={row === this.props.nowPlaying}
+                  toggleAudio={this.props.toggleAudio}
+                  setNowPlaying={this.props.setNowPlaying}
                 />
               </li>
             );

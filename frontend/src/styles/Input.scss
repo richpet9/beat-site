@@ -1,0 +1,35 @@
+@import './_defaults.scss';
+
+.input-container {
+  flex-grow: 1;
+
+  .input-label {
+    display: block;
+    margin-top: 16px;
+    margin-bottom: 4px;
+    font-size: 14px;
+  }
+
+  .input-label:first-child {
+    margin-top: 0;
+  }
+
+  .input-text {
+    width: 100%;
+    display: block;
+    font-size: 16px;
+    padding: 6px 8px;
+    border-radius: 2px;
+    border: 2px solid $lightGrey;
+    font-family: $IBM;
+  }
+
+  textarea.input-text {
+    resize: none;
+    height: 250px;
+  }
+}
+
+.input-container:first-child {
+  margin-right: 32px;
+}

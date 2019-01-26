@@ -8,7 +8,7 @@ import '../../styles/Home.css';
 class Home extends Component {
   render() {
     return (
-      <div id="home-container" className="container">
+      <div id="home-container" className="container fw">
         <div id="banner-container">
           <h1>A collection of music,</h1>
           <h1>from a musical collective.</h1>
