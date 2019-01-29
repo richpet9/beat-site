@@ -6,7 +6,7 @@ body,
 html {
   margin: 0;
   padding: 0;
-  background: $white;
+  background: $lightGrey;
 }
 
 * {
@@ -20,9 +20,10 @@ html {
 }
 
 body {
-  width: 75%;
+  width: 80%;
   margin: 0 auto;
-  background: $black;
+  padding: 0 32px;
+  background: #fff;
 }
 
 h1,
@@ -46,11 +47,7 @@ a:active {
 }
 
 .App {
-  background: $white;
-}
-
-.container {
-  background: transparent;
+  background: #fff;
 }
 
 .highlight-header {
@@ -78,10 +75,10 @@ a:active {
 input[type='button'].button,
 a.button {
   outline: none;
-  border: none;
+  border: 1px solid $highlight;
   border-radius: 2px;
-  background: $highlight;
-  color: $white;
+  background: transparent;
+  color: $highlight;
   cursor: pointer;
   padding: 8px;
   font-family: $IBM;
@@ -89,7 +86,8 @@ a.button {
 
 input[type='button'].button:hover,
 a.button:hover {
-  background: $darkHighlight;
+  background: $highlight;
+  color: $white;
 }
 
 .light {
@@ -135,7 +133,7 @@ a.button:hover {
   max-width: 700px;
   min-width: 500px;
   margin: 0 auto;
-  padding: 32px 0;
+  padding: 32px;
 }
 
 .container.fw {
@@ -150,4 +148,8 @@ a.button:hover {
 
 .flex-box.space-between {
   justify-content: space-between;
+}
+
+.flex-vcenter {
+  align-self: center;
 }

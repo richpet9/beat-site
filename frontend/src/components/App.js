@@ -27,7 +27,7 @@ class App extends Component {
     this.audio = document.getElementById('audio-controller');
 
     //Cross-platform enabling
-    window.AudioContext = window.AudioContext || window.webkitAudioContext;
+    window.AudioContext = window.webkitAudioContext || window.AudioContext;
 
     //Create an audio context and set global analyser
     this.audioCtx = new window.AudioContext();
@@ -55,7 +55,7 @@ class App extends Component {
   }
 
   toggleAudio(onlyPlay) {
-    if (this.audio.paused || onlyPlay) {
+    if (this.audio.paused || onlyPlay === true) {
       this.audio.play();
       this.setState({ paused: false });
     } else {
@@ -97,7 +97,7 @@ class App extends Component {
             <Route component={NoMatch} />
           </Switch>
 
-          <NowPlaying sound={this.state.nowPlaying} paused={this.state.paused} />
+          <NowPlaying sound={this.state.nowPlaying} paused={this.state.paused} toggleAudio={this.toggleAudio} seekAudio={this.seekAudio} />
 
           <audio id="audio-controller" loop>
             <source src={this.state.audioUrl} type="audio/mpeg" />

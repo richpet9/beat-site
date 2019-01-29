@@ -4,11 +4,13 @@
   position: fixed;
   bottom: 0;
   left: 0;
-  padding: 16px 12.5%;
-  background: $lightGrey;
+  padding: 8px calc(10% + 32px);
+  border-top: 1px solid $lightGrey;
+  background: #fff;
   width: 100%;
   color: $black;
   transition: bottom 200ms $bezierCurve;
+  justify-content: space-between;
 
   #now-playing-link {
     text-decoration: underline;
@@ -16,5 +18,21 @@
 
   #now-playing-link:hover {
     color: $highlight;
+  }
+
+  #now-playing-label {
+    display: inline-block;
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  #now-playing-pause {
+    width: 32px;
+    height: 32px;
+    font-size: 11px;
+    border: 1px solid $highlight;
+    display: inline-block;
   }
 }

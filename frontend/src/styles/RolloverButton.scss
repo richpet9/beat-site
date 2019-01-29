@@ -18,7 +18,7 @@
   .rollover-before,
   .rollover-after {
     position: absolute;
-    color: white;
+    color: $highlight;
     transition: top 150ms $bezierCurve;
   }
 
@@ -28,5 +28,6 @@
 
   .rollover-after {
     left: 40px;
+    color: $white;
   }
 }

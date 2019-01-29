@@ -38,10 +38,9 @@
     align-self: center;
     margin-right: 8px;
     font-size: 14px;
-    width: 100%;
-    padding-bottom: 8px;
-    padding-left: 10px;
-    max-width: 32px;
+    width: 32px;
+    height: 32px;
+    padding: 0;
   }
 
   .sound-play.button {
@@ -50,18 +49,8 @@
     border: 1px solid $highlight;
   }
 
-  .sound-play.button:hover {
-    background: none;
-  }
-
   .sound-pause.button {
     display: block;
-    padding-left: 8px;
-    padding-bottom: 10px;
-  }
-
-  .sound-pause.button:hover {
-    background: $highlight;
   }
 
   .sound-tags,
@@ -76,7 +65,6 @@
     display: inline-block;
     font-size: 14px;
     margin-left: 16px;
-    font-weight: bolder;
   }
 }
 
