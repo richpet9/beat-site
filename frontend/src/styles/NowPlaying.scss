@@ -5,8 +5,7 @@
   bottom: 0;
   left: 0;
   padding: 8px calc(10% + 32px);
-  border-top: 1px solid $lightGrey;
-  background: #fff;
+  background: $lightGrey;
   width: 100%;
   color: $black;
   transition: bottom 200ms $bezierCurve;

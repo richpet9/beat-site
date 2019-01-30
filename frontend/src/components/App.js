@@ -13,11 +13,12 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { nowPlaying: null, audioUrl: null, paused: true };
+    this.state = { nowPlaying: null, audioUrl: '', paused: true };
     this.audio = null;
     this.audioCtx = null;
     this.analyser = null;
 
+    this.createAudioContext = this.createAudioContext.bind(this);
     this.setNowPlaying = this.setNowPlaying.bind(this);
     this.toggleAudio = this.toggleAudio.bind(this);
     this.seekAudio = this.seekAudio.bind(this);
@@ -26,6 +27,12 @@ class App extends Component {
   componentDidMount() {
     this.audio = document.getElementById('audio-controller');
 
+    //This is for Chrome, which doesn't let you create an audioContext
+    //until the user interacts with the page
+    document.body.addEventListener('click', this.createAudioContext);
+  }
+
+  createAudioContext() {
     //Cross-platform enabling
     window.AudioContext = window.webkitAudioContext || window.AudioContext;
 
@@ -39,6 +46,9 @@ class App extends Component {
     this.analyser.connect(this.audioCtx.destination);
 
     window.analyser = this.analyser;
+
+    //Again, because of chrome, we can just remove this event listener after loading the context
+    document.body.removeEventListener('click', this.createAudioContext);
   }
 
   //This method builds the source URL for the sound

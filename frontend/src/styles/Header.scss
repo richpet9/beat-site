@@ -2,15 +2,15 @@
 
 header {
   font-family: 'IBM Plex Sans';
-  padding: 8px 32px;
+  padding: 8px 0;
   display: flex;
   justify-content: space-between;
-  background: #fff;
   color: $black;
   position: sticky;
   top: 0;
   z-index: 10;
   opacity: 0.95;
+  background: rgba($color: $white, $alpha: 0.95);
 
   #brand-name {
     letter-spacing: -1px;

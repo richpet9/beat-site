@@ -61,7 +61,7 @@ class SoundPage extends Component {
     if (this.soundInfo) {
       const tagsSplit = this.soundInfo.tags.split(' ');
       return (
-        <div id="sound-page-container">
+        <div id="sound-page-container" className="container">
           {(this.props.paused || this.soundInfo !== this.props.nowPlaying) && (
             <input type="button" className="button audio-control" id="play-button" value="&#9658;" onClick={this.toggleAudio} />
           )}

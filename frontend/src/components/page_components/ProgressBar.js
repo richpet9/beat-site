@@ -7,7 +7,7 @@ class ProgressBar extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { handleX: 0, dragging: false };
+    this.state = { handleX: 0 };
     this.updateProgress = this.updateProgress.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
@@ -24,7 +24,7 @@ class ProgressBar extends Component {
 
     const width = document.getElementById('now-playing-prog-container').offsetWidth;
     const posX = (currentTime / duration) * width;
-    this.setState({ handleX: posX });
+    this.setState({ handleX: posX ? posX : 0 });
   }
 
   handleClick(e) {

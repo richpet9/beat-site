@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import ProgressBar from '../page_components/ProgressBar';
+import ProgressBar from './ProgressBar';
 
 //Stylesheet
 import '../../styles/NowPlaying.css';

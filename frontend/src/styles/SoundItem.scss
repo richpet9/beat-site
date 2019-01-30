@@ -37,16 +37,11 @@
     display: none;
     align-self: center;
     margin-right: 8px;
-    font-size: 14px;
+    font-size: 10px;
     width: 32px;
     height: 32px;
     padding: 0;
-  }
-
-  .sound-play.button {
-    background: none;
-    color: $highlight;
-    border: 1px solid $highlight;
+    border-radius: 16px;
   }
 
   .sound-pause.button {

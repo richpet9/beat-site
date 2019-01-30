@@ -1,0 +1,67 @@
+@import './_defaults.scss';
+
+.range-input-container.container.fw {
+  position: relative;
+  display: block;
+  overflow: visible;
+  margin: 8px 0;
+  padding: 0 16px;
+
+  .range-input-selection {
+    position: absolute;
+    background: $highlight;
+    width: 100%;
+    height: 2px;
+    left: 0;
+    top: 15px;
+  }
+
+  .range-input-bar {
+    position: absolute;
+    top: 0;
+    left: 16px;
+    display: block;
+    height: 32px;
+    width: calc(100% - 32px);
+    cursor: pointer;
+  }
+
+  .range-input-bar:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    left: 0;
+    top: 15px;
+    border-radius: 2px;
+    background: rgba($color: $darkGrey, $alpha: 0.5);
+  }
+
+  .range-input-thumb {
+    display: block;
+    width: 32px;
+    height: 32px;
+    border-radius: 32px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: $highlight;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    touch-action: none;
+    box-sizing: content-box;
+
+    span {
+      display: block;
+      position: relative;
+      top: -1.5px;
+      color: $white;
+      line-height: 100%;
+      font-size: 30px;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

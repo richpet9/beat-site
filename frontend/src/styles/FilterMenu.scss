@@ -1,0 +1,24 @@
+@import './_defaults.scss';
+
+#filter-menu-container {
+  width: 27%;
+  max-width: 250px;
+  padding: 0;
+  background: $lightGrey;
+  margin-right: 16px;
+  padding: 8px 16px;
+  border-radius: 2px;
+
+  .filter-label {
+    font-family: $IBM;
+    font-weight: bold;
+    font-size: 11px;
+    color: $darkGrey;
+    display: block;
+    margin: 8px 0;
+  }
+
+  .filter-range {
+    width: 100%;
+  }
+}

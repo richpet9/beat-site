@@ -28,22 +28,11 @@ class SoundPlayer extends Component {
     this.canvas = document.getElementById('audio-canvas');
     this.ctx = this.canvas.getContext('2d');
 
-    this.checkAnalyser();
+    this.frameLoop();
 
     //Progress bar event listener
     const audio = document.getElementById('audio-controller');
     audio.addEventListener('timeupdate', this.updateProgress);
-  }
-
-  //CheckAnalyser checks if the audio analyser is loaded in window, and loops if not
-  checkAnalyser() {
-    setTimeout(() => {
-      if (window.analyser) {
-        this.frameLoop();
-      } else {
-        this.checkAnalyser();
-      }
-    }, 20);
   }
 
   //This method runs every frame (~60fps)
@@ -51,28 +40,34 @@ class SoundPlayer extends Component {
     if (!this.stopAnimation) {
       window.requestAnimationFrame(this.frameLoop);
 
-      //Create an array with the number of bins of the analyser
-      let fArr = new Uint8Array(window.analyser.frequencyBinCount);
-      //Fill the array
-      window.analyser.getByteFrequencyData(fArr);
+      //If we have the window analyser ready
+      let fArr = null;
+      if (window.analyser) {
+        //Create an array with the number of bins of the analyser
+        fArr = new Uint8Array(window.analyser.frequencyBinCount);
+        //Fill the array
+        window.analyser.getByteFrequencyData(fArr);
+      }
 
       //Clear the canvas, set bar color, set number of bars and width
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       this.ctx.fillStyle = 'rgb(53, 157, 241)';
-      const numBars = 50;
-      const barWidth = this.canvas.width / numBars;
+      const numBars = 40;
+      const barOffset = 3;
+      const barWidth = Math.ceil((this.canvas.width - barOffset * numBars) / numBars);
 
       //For every bar
       for (let i = 0; i < numBars; i++) {
         //Set the barX location
-        const barX = (barWidth + 2) * i;
+        const barX = (barWidth + barOffset) * i;
         //Set bar height
         let barHeight;
         //If we aren't on the page for the current sound, do not move the bars
         if (this.props.sound !== this.props.nowPlaying) {
+          //Not moving bars have a default height of -5 (5 pixels above the floor)
           barHeight = -5;
         } else {
-          barHeight = -(fArr[i] / 2) - 5;
+          barHeight = Math.floor(-(fArr[i] / 2) - 5);
         }
 
         //Create the bar for this frame
