@@ -24,7 +24,7 @@ class FilterMenu extends Component {
       tag = tag.slice(0, 1).toUpperCase() + tag.slice(1);
       return (
         <span>
-          <label for={'tag-' + tag} className="filter-tag-label">
+          <label htmlFor={'tag-' + tag} className="filter-tag-label">
             <input type="checkbox" id={'tag-' + tag} className="filter-tag-input" />
             <span className="filter-tag-label-text">{tag}</span>
             <span className="filter-tag-checkbox" />

@@ -33,7 +33,7 @@ class Collapsible extends Component {
       <div className="collapsible-list">
         <ul>
           {theList.map(value => {
-            return <li>{value}</li>;
+            return <li key={Math.random().toFixed(6)}>{value}</li>;
           })}
 
           {!this.state.showAll && (

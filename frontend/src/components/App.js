@@ -53,8 +53,8 @@ class App extends Component {
 
   //This method builds the source URL for the sound
   buildSourceUrl(soundInfo) {
-    //return '/api/preview/beats/' + soundInfo.id + '/' + soundInfo.name.replace(/ /g, '-').toLowerCase();
-    return '/dev_sounds/ad-' + soundInfo.name.replace(/ /g, '-').toLowerCase() + '-p.mp3';
+    return '/api/preview/beats/' + soundInfo.id + '/' + soundInfo.name.replace(/ /g, '-').toLowerCase();
+    //return '/dev_sounds/ad-' + soundInfo.name.replace(/ /g, '-').toLowerCase() + '-p.mp3';
   }
 
   setNowPlaying(soundInfo) {
