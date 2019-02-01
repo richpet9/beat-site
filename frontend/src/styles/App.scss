@@ -1,6 +1,7 @@
 @import './_defaults.scss';
 
-@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:200,400,400i,700');
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:200,400,700');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400');
 
 body,
 html {
@@ -99,13 +100,15 @@ a.button:hover {
 }
 .sound-tags {
   display: inline-block;
-  font-family: $IBM;
 }
 
 .sound-tag {
   margin-right: 4px;
   transition: all 150ms $bezierCurve;
   opacity: 0.35;
+  font-family: $IBM;
+  font-weight: normal;
+  color: $darkGrey;
 
   a {
     display: inline-block;
@@ -113,10 +116,7 @@ a.button:hover {
     border-radius: 2px;
     border: 1px solid $darkGrey;
     background: transparent;
-    color: $darkGrey;
     font-size: 11px;
-    letter-spacing: -0.5px;
-    font-weight: normal;
   }
 }
 

@@ -26,7 +26,9 @@ class SoundItem extends Component {
           <div className="sound-name">
             <Link to={'/beats/' + id + '/' + name.replace(/ /g, '-').toLowerCase()}>{name}</Link>
           </div>
-          <span className="sound-bpm">{bpm} BPM</span>/<span className="sound-plays">{plays} PLAYS</span>
+          <div className="sound-meta-info">
+            <span className="sound-bpm">{bpm} BPM</span>/<span className="sound-plays">{plays} PLAYS</span>
+          </div>
         </div>
         <div className="sound-right">
           <div className="sound-tags">

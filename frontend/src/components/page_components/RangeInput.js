@@ -16,18 +16,12 @@ class RangeInput extends Component {
   }
 
   componentDidMount() {
-    const { defaultLeft, defaultRight } = this.props;
-    let leftPosX = 0,
-      rightPosX = 100;
+    const defaultLeft = this.props.defaultLeft || 0;
+    const defaultRight = this.props.defaultRight || 100;
 
-    if (defaultLeft) {
-      //There is a default value
-      leftPosX = (defaultLeft / 100) * (this.container.current.offsetWidth - 32);
-    }
-    if (defaultRight) {
-      //There is a default value
-      rightPosX = (defaultRight / 100) * (this.container.current.offsetWidth - 32);
-    }
+    const leftPosX = (defaultLeft / 100) * (this.container.current.offsetWidth - 32);
+
+    const rightPosX = (defaultRight / 100) * (this.container.current.offsetWidth - 32);
 
     //Now update the selection bar
     this.setState({

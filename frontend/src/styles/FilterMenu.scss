@@ -9,10 +9,14 @@
   padding: 8px 16px;
   border-radius: 2px;
 
+  h3 {
+    font-size: 20px;
+  }
+
   .filter-label {
-    font-family: $IBM;
+    font-family: $SansSerif;
     font-weight: bold;
-    font-size: 11px;
+    font-size: 16px;
     color: $darkGrey;
     display: block;
     margin: 8px 0;
@@ -20,5 +24,60 @@
 
   .filter-range {
     width: 100%;
+  }
+
+  .filter-tag-label {
+    position: relative;
+    height: 24px;
+    display: inline-block;
+    padding-left: 32px;
+    margin-bottom: 5px;
+    font-family: $SansSerif;
+    font-weight: lighter;
+    color: $darkGrey;
+    letter-spacing: -0.5px;
+    cursor: pointer;
+
+    .filter-tag-label-text {
+      position: relative;
+      top: 2px;
+    }
+
+    .filter-tag-input {
+      display: none;
+    }
+
+    .filter-tag-checkbox {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 24px;
+      width: 24px;
+      background-color: #fff;
+      border: 2px solid $lessLightGrey;
+    }
+
+    .filter-tag-checkbox:after {
+      display: none;
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 1px;
+      width: 5px;
+      height: 12px;
+      border: solid $highlight;
+      border-width: 0 3px 3px 0;
+      transform: rotate(45deg);
+    }
+
+    .filter-tag-input:checked ~ .filter-tag-checkbox:after {
+      display: block;
+    }
+  }
+
+  .filter-tag-label:hover {
+    .filter-tag-checkbox {
+      background: $white;
+    }
   }
 }

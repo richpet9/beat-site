@@ -1,7 +1,6 @@
 @import './_defaults.scss';
 
 .sound-container {
-  font-family: $IBM;
   margin: 0px 0;
   display: flex;
   padding: 8px;
@@ -9,7 +8,6 @@
 
   .sound-left {
     flex-grow: 1;
-    font-weight: lighter;
     margin-left: 40px;
   }
 
@@ -22,8 +20,10 @@
   }
 
   .sound-name {
+    font-family: $SansSerif;
     font-weight: normal;
     font-size: 18px;
+    letter-spacing: 0.5px;
     color: $black;
     line-height: 100%;
 
@@ -48,11 +48,17 @@
     display: block;
   }
 
+  .sound-meta-info {
+    font-weight: normal;
+    opacity: 0.35;
+  }
+
   .sound-tags,
   .sound-date,
   .sound-bpm,
   .sound-plays,
   .sound-purchases {
+    font-family: $IBM;
     font-size: 12px;
   }
 

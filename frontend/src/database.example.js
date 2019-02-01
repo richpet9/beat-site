@@ -15,3 +15,5 @@ export const rows = [
   { id: 4, name: 'Stargazer', date_uploaded: '01/23/19', bpm: 130, price: 75.0, purchases: 0, plays: 0, tags: 'fresh energy' },
   { id: 5, name: 'The Fallen', date_uploaded: '01/23/19', bpm: 135, price: 100.0, purchases: 0, plays: 0, tags: 'trap drums' }
 ];
+
+export const tags = ['dark', 'trap', 'bold', 'dreamy', 'muted', 'lofi', 'fresh', 'slow', 'energy'];

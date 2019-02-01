@@ -1,0 +1,19 @@
+@import './_defaults.scss';
+
+.collapsible-list {
+  ul {
+    list-style: none;
+
+    .collapsible-button {
+      color: $highlight;
+      font-family: $IBM;
+      font-weight: bold;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .collapsible-button:hover {
+      text-decoration: underline;
+    }
+  }
+}
