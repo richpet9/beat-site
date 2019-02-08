@@ -1,1 +1,11 @@
 @import './_defaults.scss';
+
+#beats-container {
+  padding-top: 0;
+  padding-bottom: 100px;
+
+  h1 {
+    font-size: 42px;
+    padding-bottom: 16px;
+  }
+}

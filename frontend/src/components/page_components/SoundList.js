@@ -4,9 +4,6 @@ import SoundItem from './SoundItem';
 //Stylesheet
 import '../../styles/SoundList.css';
 
-//For test purposes
-import { rows } from '../../database.example';
-
 class SoundList extends Component {
   constructor(props) {
     super(props);
@@ -18,7 +15,7 @@ class SoundList extends Component {
     return (
       <div className="sound-list-container">
         <ul>
-          {rows.map(row => {
+          {this.props.soundItems.map(row => {
             return (
               <li key={row.id}>
                 <SoundItem

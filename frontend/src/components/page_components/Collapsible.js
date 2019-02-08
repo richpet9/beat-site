@@ -20,13 +20,13 @@ class Collapsible extends Component {
     let theList = null,
       theRest = null;
 
-    const { idealLength, values } = this.props;
+    const { idealLength, children } = this.props;
 
-    if (values.length > idealLength + 1) {
-      theList = values.slice(0, idealLength);
-      theRest = values.slice(idealLength);
+    if (children.length > idealLength + 1) {
+      theList = children.slice(0, idealLength);
+      theRest = children.slice(idealLength);
     } else {
-      theList = values;
+      theList = children;
     }
 
     return (
@@ -44,7 +44,7 @@ class Collapsible extends Component {
 
           {this.state.showAll &&
             theRest.map(value => {
-              return <li>{value}</li>;
+              return <li key={Math.random().toFixed(6)}>{value}</li>;
             })}
 
           {this.state.showAll && (
